@@ -1,0 +1,293 @@
+[
+  {
+    "id": 1,
+    "name": "Troll",
+    "strength": 55,
+    "intellect": 5,
+    "stamina": 30,
+    "attack_moves": [
+      {
+        "name": "Rock throw",
+        "base_damage": 11,
+        "charges": 45
+      },
+      {
+        "name": "Smash!",
+        "base_damage": 15,
+        "charges": 5
+      }
+    ],
+    "healing_moves": [
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Mouse",
+    "strength": 3,
+    "intellect": 15,
+    "stamina": 2,
+    "attack_moves": [
+      {
+        "name": "Slice",
+        "base_damage": 2,
+        "charges": 45
+      },
+      {
+        "name": "Bite",
+        "base_damage": 3,
+        "charges": 15
+      }
+    ],
+    "healing_moves": [
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Elephant",
+    "strength": 15,
+    "intellect": 35,
+    "stamina": 55,
+    "attack_moves": [
+      {
+        "name": "Stomp",
+        "base_damage": 10,
+        "charges": 45
+      },
+      {
+        "name": "Charge",
+        "base_damage": 12,
+        "charges": 10
+      },
+      {
+        "name": "Tusk Swing",
+        "base_damage": 20,
+        "charges": 15
+      }
+    ],
+    "healing_moves": [
+      {
+        "name": "Meditation",
+        "base_healing": 15,
+        "charges": 5
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Great Blue Whale",
+    "strength": 2,
+    "intellect": 45,
+    "stamina": 400,
+    "attack_moves": [
+      {
+        "name": "Splash",
+        "base_damage": 5,
+        "charges": 45
+      },
+      {
+        "name": "Waterfall",
+        "base_damage": 30,
+        "charges": 15
+      },
+      {
+        "name": "Tsunami",
+        "base_damage": 52,
+        "charges": 1
+      }
+    ],
+    "healing_moves": [
+      {
+        "name": "Deep Dive",
+        "base_healing": 30,
+        "charges": 5
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "name": "Lion",
+    "strength": 50,
+    "intellect": 25,
+    "stamina": 75,
+    "attack_moves": [
+      {
+        "name": "Roar",
+        "base_damage": 5,
+        "charges": 45
+      },
+      {
+        "name": "Claw",
+        "base_damage": 15,
+        "charges": 15
+      },
+      {
+        "name": "Prey",
+        "base_damage": 32,
+        "charges": 5
+      }
+    ],
+    "healing_moves": [
+      {
+        "name": "Lick Wounds",
+        "base_healing": 5,
+        "charges": 10
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "name": "Tiger",
+    "strength": 45,
+    "intellect": 35,
+    "stamina": 65,
+    "attack_moves": [
+      {
+        "name": "Crouch",
+        "base_damage": 10,
+        "charges": 45
+      },
+      {
+        "name": "Claw",
+        "base_damage": 12,
+        "charges": 15
+      },
+      {
+        "name": "Prey",
+        "base_damage": 22,
+        "charges": 6
+      }
+    ],
+    "healing_moves": [
+      {
+        "name": "Lick Wounds",
+        "base_healing": 12,
+        "charges": 10
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "name": "Blue Dragon",
+    "strength": 75,
+    "intellect": 75,
+    "stamina": 75,
+    "attack_moves": [
+      {
+        "name": "Fly",
+        "base_damage": 22,
+        "charges": 10
+      },
+      {
+        "name": "Mangle",
+        "base_damage": 35,
+        "charges": 10
+      },
+      {
+        "name": "Blue Dragonfire",
+        "base_damage": 60,
+        "charges": 3
+      }
+    ],
+    "healing_moves": [
+    ]
+  },
+  {
+    "id": 8,
+    "name": "Black Dragon",
+    "strength": 175,
+    "intellect": 105,
+    "stamina": 100,
+    "attack_moves": [
+      {
+        "name": "Fly",
+        "base_damage": 32,
+        "charges": 10
+      },
+      {
+        "name": "Rip",
+        "base_damage": 50,
+        "charges": 15
+      },
+      {
+        "name": "Black Dragonfire",
+        "base_damage": 78,
+        "charges": 5
+      }
+    ],
+    "healing_moves": [
+    ]
+  },
+  {
+    "id": 9,
+    "name": "Boar",
+    "strength": 35,
+    "intellect": 5,
+    "stamina": 10,
+    "attack_moves": [
+      {
+        "name": "Charge",
+        "base_damage": 12,
+        "charges": 70
+      }
+    ],
+    "healing_moves": [
+    ]
+  },
+  {
+    "id": 10,
+    "name": "Human",
+    "strength": 15,
+    "intellect": 75,
+    "stamina": 15,
+    "attack_moves": [
+      {
+        "name": "Pounch",
+        "base_damage": 7,
+        "charges": 200
+      },
+      {
+        "name": "Kick",
+        "base_damage": 9,
+        "charges": 150
+      }
+    ],
+    "healing_moves": [
+      {
+        "name": "First Aid",
+        "base_healing": 25,
+        "charges": 20
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "name": "Golden Dragon",
+    "strength": 145,
+    "intellect": 155,
+    "stamina": 95,
+    "attack_moves": [
+      {
+        "name": "Fly",
+        "base_damage": 26,
+        "charges": 15
+      },
+      {
+        "name": "Dragon\\'s Roar",
+        "base_damage": 32,
+        "charges": 15
+      },
+      {
+        "name": "Golden Dragonfire",
+        "base_damage": 67,
+        "charges": 3
+      }
+    ],
+    "healing_moves": [
+      {
+        "name": "Golden Skin",
+        "base_healing": 50,
+        "charges": 5
+      }
+    ]
+  }
+]
