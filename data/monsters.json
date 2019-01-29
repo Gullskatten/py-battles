@@ -5,6 +5,7 @@
     "strength": 55,
     "intellect": 5,
     "stamina": 30,
+    "speed": 5,
     "attack_moves": [
       {
         "name": "Rock throw",
@@ -26,6 +27,7 @@
     "strength": 3,
     "intellect": 15,
     "stamina": 2,
+    "speed": 150,
     "attack_moves": [
       {
         "name": "Slice",
@@ -47,6 +49,7 @@
     "strength": 15,
     "intellect": 35,
     "stamina": 55,
+    "speed": 10,
     "attack_moves": [
       {
         "name": "Stomp",
@@ -78,6 +81,7 @@
     "strength": 2,
     "intellect": 45,
     "stamina": 400,
+    "speed": 25,
     "attack_moves": [
       {
         "name": "Splash",
@@ -109,6 +113,7 @@
     "strength": 50,
     "intellect": 25,
     "stamina": 75,
+    "speed": 55,
     "attack_moves": [
       {
         "name": "Roar",
@@ -140,6 +145,7 @@
     "strength": 45,
     "intellect": 35,
     "stamina": 65,
+    "speed": 55,
     "attack_moves": [
       {
         "name": "Crouch",
@@ -171,6 +177,7 @@
     "strength": 75,
     "intellect": 75,
     "stamina": 75,
+    "speed": 65,
     "attack_moves": [
       {
         "name": "Fly",
@@ -197,6 +204,7 @@
     "strength": 175,
     "intellect": 105,
     "stamina": 100,
+    "speed": 75,
     "attack_moves": [
       {
         "name": "Fly",
@@ -223,6 +231,7 @@
     "strength": 35,
     "intellect": 5,
     "stamina": 10,
+    "speed": 35,
     "attack_moves": [
       {
         "name": "Charge",
@@ -239,6 +248,7 @@
     "strength": 15,
     "intellect": 75,
     "stamina": 15,
+    "speed": 30,
     "attack_moves": [
       {
         "name": "Pounch",
@@ -265,6 +275,7 @@
     "strength": 145,
     "intellect": 155,
     "stamina": 95,
+    "speed": 90,
     "attack_moves": [
       {
         "name": "Fly",
