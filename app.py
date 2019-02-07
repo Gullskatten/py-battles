@@ -60,13 +60,14 @@ if __name__ == '__main__':
             print('\n Your turn. \n')
 
             selected_move_tuple = select_move(first_opponent)
-            print(selected_move_tuple)
+
             if selected_move_tuple[1] == 'heal':
                 healing_done = heal(first_opponent,
                                     selected_move_tuple[0]['base_healing'],
                                     selected_move_tuple[0]['name'])
                 first_opponent['health'] = first_opponent['health'] + healing_done[0]
                 print(healing_done[1])
+
             elif selected_move_tuple[1] == 'attack':
                 damage_done = attack(
                     first_opponent,
@@ -75,6 +76,7 @@ if __name__ == '__main__':
                     selected_move_tuple[0]['name'])
                 second_opponent['health'] = second_opponent['health'] - damage_done[0]
                 print(damage_done[1])
+
             turn_counter = 0
 
     if first_opponent['health'] > 0:

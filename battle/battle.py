@@ -44,10 +44,10 @@ def select_move(monster):
         print('(0) Heal')
         print('(1) Attack opponent')
         try:
-            attack_type_selected = int(input('\n Choose an option: '))
+            attack_type_selected = int(input('\n Choose an action: '))
         except ValueError:
             print("\n That move option wasn't found (expected 0 or 1). \n")
-            select_move(monster)
+            return select_move(monster)
 
     if attack_type_selected == 1:
         print_moves(monster['attack_moves'], 'damage', 'base_damage')
@@ -55,27 +55,26 @@ def select_move(monster):
         print_moves(monster['healing_moves'], 'healing', 'base_healing')
     else:
         print("\n That move option wasn't found (expected 0 or 1). \n")
-        select_move(monster)
+        return select_move(monster)
 
     try:
-        selected_idx = int(input('\n Choose a move: '))
+        selected_idx = int(input('\n Choose an ability: '))
         if attack_type_selected == 1:
             if selected_idx > len(monster['attack_moves'])-1 or selected_idx < 0:
-                print("\n That move was not found. \n")
-                select_move(monster)
+                print("\n That attack was not found. \n")
+                return select_move(monster)
             else:
                 selected_move = monster['attack_moves'][selected_idx]
                 if selected_move['charges'] > 0:
                     monster['attack_moves'][selected_idx]['charges'] = selected_move['charges'] - 1
-                    print(selected_move, 'attack')
                     return selected_move, 'attack'
                 else:
                     print("\n That move has no charges left! \n")
-                    select_move(monster)
+                    return select_move(monster)
         elif attack_type_selected == 0:
             if selected_idx > len(monster['healing_moves'])-1 or selected_idx < 0:
-                print("\n That move was not found. \n")
-                select_move(monster)
+                print("\n That healing ability was not found. \n")
+                return select_move(monster)
             else:
                 selected_move = monster['healing_moves'][selected_idx]
                 if selected_move['charges'] > 0:
@@ -83,10 +82,10 @@ def select_move(monster):
                     return selected_move, 'heal'
                 else:
                     print("\n That move has no charges left! \n")
-                    select_move(monster)
+                    return select_move(monster)
     except ValueError:
         print("\n Dude, that's not an option! \n")
-        select_move(monster)
+        return select_move(monster)
 
 
 def set_random_level(monster, user_selected_monster):
