@@ -1,7 +1,10 @@
 #! /usr/bin/env bash
 import json
 
-from battle.battle import get_random_monster, determine_initial_turn, select_monster
+from battle.battle import get_random_monster, determine_initial_turn, select_monster, select_move
+from events.attacks import attack
+from events.heal import heal
+from util.prints import print_indexed_list
 
 INITIAL_WELCOME_TEXT = "\t\t\tWelcome to Monster Battle!"
 TEMPLATE_BATTLE_VS = "\t{first_opponent} (lvl {first_opponent_level})\t" \
@@ -17,7 +20,7 @@ if __name__ == '__main__':
         all_monsters = json.load(f)
     print()
     print(INITIAL_WELCOME_TEXT)
-
+    print(DELIMITER)
     first_opponent = select_monster(all_monsters)
     second_opponent = get_random_monster(all_monsters, first_opponent)
 
@@ -45,3 +48,36 @@ if __name__ == '__main__':
     print(TEMPLATE_OPPONENT_STARTS.format(opponent=first_opponent['name'])) if turn_counter == 1 else print(
         TEMPLATE_OPPONENT_STARTS.format(opponent=second_opponent['name']))
 
+    while first_opponent['health'] > 0 and second_opponent['health'] > 0:
+
+        if turn_counter == 0:
+            print('\n Opponents turn. \n')
+
+            first_opponent['health'] = first_opponent['health'] - 100
+            turn_counter = 1
+
+        else:
+            print('\n Your turn. \n')
+
+            selected_move_tuple = select_move(first_opponent)
+            print(selected_move_tuple)
+            if selected_move_tuple[1] == 'heal':
+                healing_done = heal(first_opponent,
+                                    selected_move_tuple[0]['base_healing'],
+                                    selected_move_tuple[0]['name'])
+                first_opponent['health'] = first_opponent['health'] + healing_done[0]
+                print(healing_done[1])
+            elif selected_move_tuple[1] == 'attack':
+                damage_done = attack(
+                    first_opponent,
+                    second_opponent,
+                    selected_move_tuple[0]['base_damage'],
+                    selected_move_tuple[0]['name'])
+                second_opponent['health'] = second_opponent['health'] - damage_done[0]
+                print(damage_done[1])
+            turn_counter = 0
+
+    if first_opponent['health'] > 0:
+        print('You won!')
+    else:
+        print('Oh no, you lost!')

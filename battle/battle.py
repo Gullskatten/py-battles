@@ -3,7 +3,7 @@
 import random
 from random import randrange
 
-from util.prints import print_indexed_list
+from util.prints import print_indexed_list, print_moves
 
 
 def get_random_monster(monsters, first_opponent):
@@ -19,22 +19,79 @@ def select_monster(monsters):
 
     # TODO: Perform input validation on monster!
     selected_monster_input = input(
-        'Pick a number (0-{monsters_length}) to select a monster: '.format(monsters_length=len(monsters)-1)
+        '\n Pick a number (0-{monsters_length}) to select a monster: '.format(monsters_length=len(monsters)-1)
     )
     try:
         selected_monster_idx = int(selected_monster_input)
+        if selected_monster_idx > len(monsters) or selected_monster_idx < 0:
+            print("\n Woops! Couldn't find a monster with that number. \n")
+            select_monster(monsters)
+        selected_level = int(input('\n Select your monsters level (1+): '))
+        if selected_level <= 0:
+            selected_level = 1
         selected_monster = monsters.pop(selected_monster_idx)
-        selected_level = int(input('Select your monsters level: '))
         selected_monster['level'] = selected_level
         set_health(selected_monster)
         return selected_monster
     except ValueError:
-        print("Woops! Couldn't find that a monster with that number.")
+        print("\n Woops! That wasn't expected. \n")
         select_monster(monsters)
 
 
+def select_move(monster):
+    attack_type_selected = 1
+    if len(monster['healing_moves']):
+        print('(0) Heal')
+        print('(1) Attack opponent')
+        try:
+            attack_type_selected = int(input('\n Choose an option: '))
+        except ValueError:
+            print("\n That move option wasn't found (expected 0 or 1). \n")
+            select_move(monster)
+
+    if attack_type_selected == 1:
+        print_moves(monster['attack_moves'], 'damage', 'base_damage')
+    elif attack_type_selected == 0:
+        print_moves(monster['healing_moves'], 'healing', 'base_healing')
+    else:
+        print("\n That move option wasn't found (expected 0 or 1). \n")
+        select_move(monster)
+
+    try:
+        selected_idx = int(input('\n Choose a move: '))
+        if attack_type_selected == 1:
+            if selected_idx > len(monster['attack_moves'])-1 or selected_idx < 0:
+                print("\n That move was not found. \n")
+                select_move(monster)
+            else:
+                selected_move = monster['attack_moves'][selected_idx]
+                if selected_move['charges'] > 0:
+                    monster['attack_moves'][selected_idx]['charges'] = selected_move['charges'] - 1
+                    print(selected_move, 'attack')
+                    return selected_move, 'attack'
+                else:
+                    print("\n That move has no charges left! \n")
+                    select_move(monster)
+        elif attack_type_selected == 0:
+            if selected_idx > len(monster['healing_moves'])-1 or selected_idx < 0:
+                print("\n That move was not found. \n")
+                select_move(monster)
+            else:
+                selected_move = monster['healing_moves'][selected_idx]
+                if selected_move['charges'] > 0:
+                    monster['healing_moves'][selected_idx]['charges'] = selected_move['charges'] - 1
+                    return selected_move, 'heal'
+                else:
+                    print("\n That move has no charges left! \n")
+                    select_move(monster)
+    except ValueError:
+        print("\n Dude, that's not an option! \n")
+        select_move(monster)
+
+
 def set_random_level(monster, user_selected_monster):
-    monster['level'] = random.randint(user_selected_monster['level'] - 5, user_selected_monster['level'] + 5)
+    min_level = user_selected_monster['level'] - 5 if user_selected_monster['level'] > 5 else 1
+    monster['level'] = random.randint(min_level, user_selected_monster['level'] + 5)
     return monster
 
 
