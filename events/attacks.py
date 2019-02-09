@@ -35,6 +35,6 @@ def attack(attacker, target, base_modifier, attack_name):
 
 
 def _determine_damage_done(attacker, base_matrix, critical_modifier):
-    return math.ceil((attacker['strength'] * attacker['level']) * (base_matrix / 85) * critical_modifier)
+    return math.ceil((attacker['strength'] * 0.5 / attacker['level']) * (base_matrix / 85) * critical_modifier)
 
 

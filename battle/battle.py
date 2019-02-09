@@ -51,8 +51,10 @@ def select_move(monster):
 
     if attack_type_selected == 1:
         print_moves(monster['attack_moves'], 'damage', 'base_damage')
+        print('\n')
     elif attack_type_selected == 0:
         print_moves(monster['healing_moves'], 'healing', 'base_healing')
+        print('\n')
     else:
         print("\n That move option wasn't found (expected 0 or 1). \n")
         return select_move(monster)

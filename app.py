@@ -10,10 +10,11 @@ INITIAL_WELCOME_TEXT = "\t\t\tWelcome to Monster Battle!"
 TEMPLATE_BATTLE_VS = "\t{first_opponent} (lvl {first_opponent_level})\t" \
                      " vs \t{second_opponent} (lvl {second_opponent_level})"
 
-TEMPLATE_OPPONENT_STARTS = "{opponent} starts!"
+TEMPLATE_OPPONENT_STARTS = "\n {opponent} starts!"
 DELIMITER = "\n_______________________________________________________\n"
 
-TEMPLATE_REMAINING_HEALTH = "\t{opponent} (HP {opponent_health}/{opponent_max_health})"
+TEMPLATE_REMAINING_HEALTH = " {opponent} (HP {opponent_health}/{opponent_max_health}) \t"
+ABILITY_ACTION_TEMPLATE = "\n {action} \n"
 
 if __name__ == '__main__':
     with open('./data/monsters.json', 'r') as f:
@@ -34,22 +35,17 @@ if __name__ == '__main__':
     print(DELIMITER)
     turn_counter = determine_initial_turn(first_opponent, second_opponent)
 
-    print(TEMPLATE_REMAINING_HEALTH.format(
-        opponent=first_opponent['name'],
-        opponent_health=first_opponent['health'],
-        opponent_max_health=first_opponent['max_health']))
-
-    print(TEMPLATE_REMAINING_HEALTH.format(
-        opponent=second_opponent['name'],
-        opponent_health=second_opponent['health'],
-        opponent_max_health=second_opponent['max_health'])
-    )
-
-    print(TEMPLATE_OPPONENT_STARTS.format(opponent=first_opponent['name'])) if turn_counter == 1 else print(
-        TEMPLATE_OPPONENT_STARTS.format(opponent=second_opponent['name']))
-
     while first_opponent['health'] > 0 and second_opponent['health'] > 0:
 
+        print(TEMPLATE_REMAINING_HEALTH.format(
+            opponent=second_opponent['name'],
+            opponent_health=second_opponent['health'],
+            opponent_max_health=second_opponent['max_health'])
+              + TEMPLATE_REMAINING_HEALTH.format(
+            opponent=first_opponent['name'],
+            opponent_health=first_opponent['health'],
+            opponent_max_health=first_opponent['max_health'])
+              )
         if turn_counter == 0:
             print('\n Opponents turn. \n')
 
@@ -66,7 +62,7 @@ if __name__ == '__main__':
                                     selected_move_tuple[0]['base_healing'],
                                     selected_move_tuple[0]['name'])
                 first_opponent['health'] = first_opponent['health'] + healing_done[0]
-                print(healing_done[1])
+                print(ABILITY_ACTION_TEMPLATE.format(action=healing_done[1]))
 
             elif selected_move_tuple[1] == 'attack':
                 damage_done = attack(
@@ -75,7 +71,7 @@ if __name__ == '__main__':
                     selected_move_tuple[0]['base_damage'],
                     selected_move_tuple[0]['name'])
                 second_opponent['health'] = second_opponent['health'] - damage_done[0]
-                print(damage_done[1])
+                print(ABILITY_ACTION_TEMPLATE.format(action=damage_done[1]))
 
             turn_counter = 0
 
